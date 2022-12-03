@@ -110,6 +110,10 @@ function anotherEmployee(){
     })
 }
 function renderHTMLFile() {
+fs.writeFileSync("./index.html", generateTeam(employees),
+"utf-8"
+)   
+
 
 // if (position == 'Manager') {
 //     /*html*/`
@@ -228,26 +232,79 @@ function renderHTMLFile() {
 
 
 
-fs.writeFileSync('./index.html', /*html*/`
-<ul>
-${employees.map(employees => `
-    <li>
-    <div>
-    <h1>${employees.getName()}</h1>
-    <p>${employees.getId()}</p>
-    <a href="mailto:${employees.getEmail()}">${employees.getEmail()}</a>
-    <p>${employees.getRole()}</p>
-    <p>${employees.officeNumber? :}</p>
-    <a href ="https://www.github.com/${employees.github}">${employees.github}</a>
-    <p>${employees.school}</p>
-    </div>
-    </li>
-     `)}
-     </ul>
-`)
+// fs.writeFileSync('./index.html', /*html*/`
+// <ul>
+// ${employees.map(employees => `
+//     <li>
+//     <div>
+//     <h1>${employees.getName()}</h1>
+//     <p>${employees.getId()}</p>
+//     <a href="mailto:${employees.getEmail()}">${employees.getEmail()}</a>
+//     <p>${employees.getRole()}</p>
+//     <p>${employees.officeNumber? :}</p>
+//     <a href ="https://www.github.com/${employees.github}">${employees.github}</a>
+//     <p>${employees.school}</p>
+//     </div>
+//     </li>
+//      `)}
+//      </ul>
+// `)
 }
 
+// create the team
+const generateTeam = team => {
 
+    // create the manager html
+    const generateManager = manager => {
+        return `
+        <ul>
+            <li>
+            <div>
+            <h1>${manager.getName()}</h1>
+            <p>${manager.getId()}</p>
+            <a href="mailto:${manager.getEmail()}">${employees.getEmail()}</a>
+            <p>${manager.getRole()}</p>
+            <p>${manager.getOfficeNumber()}</p>
+            </div>
+            </li>
+             </ul>
+         `;
+    };
+
+    // create the html for engineers
+    const generateEngineer = engineer => {
+        return `
+        <ul>
+        <li>
+        <div>
+        <h1>${engineer.getName()}</h1>
+        <p>${engineer.getId()}</p>
+        <a href="mailto:${engineer.getEmail()}">${employees.getEmail()}</a>
+        <p>${engineer.getRole()}</p>
+        <p>${engineer.getGithub()}</p>
+        </div>
+        </li>
+         </ul>
+         `;
+    };
+
+    // create the html for interns
+    const generateIntern = intern => {
+        return `
+        <ul>
+        <li>
+        <div>
+        <h1>${intern.getName()}</h1>
+        <p>${intern.getId()}</p>
+        <a href="mailto:${intern.getEmail()}">${employees.getEmail()}</a>
+        <p>${intern.getRole()}</p>
+        <p>${intern.getSchool()}</p>
+        </div>
+        </li>
+         </ul>
+         `;
+    };
+}
 
 
 newEmployee()
