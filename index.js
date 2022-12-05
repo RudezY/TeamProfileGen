@@ -8,6 +8,7 @@ const employees = []
 const position = employees.role;
 //TODO - write your inquirer app here to gather information about the team members, and generate the HTML file using fs
 function newEmployee() {
+   //  questions asked using inquirer
     inquirer.prompt([
         {
         type : 'list',
@@ -110,7 +111,7 @@ function anotherEmployee(){
     })
 }
 function renderHTMLFile() {
-
+//render html file
 fs.writeFileSync('./index.html', /*html*/`
 <!DOCTYPE html>
 <html lang="en">
@@ -122,18 +123,18 @@ fs.writeFileSync('./index.html', /*html*/`
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<div class="jumbotron" style="text-align: center; border-bottom: 5px solid black; opacity : .9; background : linear-gradient(to top, rgb(232, 113, 57), rgb(10, 162, 213)); color:black; text-align:center; " id="jumbotron">
+<div class="jumbotron" style="text-align: center; border-bottom: 5px solid black; opacity : .9; background : linear-gradient(to top, rgb(185, 166, 160), rgb(39, 181, 228)); color:black; text-align:center; " id="jumbotron">
 <h1 class="display-4" style="font-weight:bolder;">This is our team!</h1>
 </div>
 <div class="container">
 <div class="row">
 
 ${employees.map(employees => `
-
-
-    <div class = "col-md-3 text-dark bg-light" style = "margin : 5px;">
+    <div class = "col-md-3 text-dark" style = "margin : 5px; background-color: rgb(216, 214, 214); border-radius: 5px; border-color: black; border-style: solid; box-shadow: 5px 5px 5px rgb(81, 79, 79);">
+    <header style="background : rgb(39, 181, 228)">
     <h1>${employees.getName()}</h1>
     ${uniqueIcon(employees)}
+    </header>
     <p class = 'fa-solid fa-id-card'> ID NUMBER : ${employees.getId()}</p><br>
     <p class= "fa-solid fa-envelope"><a href="mailto:${employees.getEmail()}"> Email</a></p><br>
     ${uniqueInfo(employees)}
