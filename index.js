@@ -5,8 +5,8 @@ const Intern = require('./lib/Intern');
 const inquirer = require('inquirer');
 const fs = require('fs');
 const employees = []
-const position = employees.role;
-//TODO - write your inquirer app here to gather information about the team members, and generate the HTML file using fs
+
+// write your inquirer app here to gather information about the team members, and generate the HTML file using fs
 function newEmployee() {
    //  questions asked using inquirer
     inquirer.prompt([
@@ -130,7 +130,7 @@ fs.writeFileSync('./index.html', /*html*/`
 <div class="row">
 
 ${employees.map(employees => `
-    <div class = "col-md-3 text-dark" style = "margin : 5px; background-color: rgb(216, 214, 214); border-radius: 5px; border-color: black; border-style: solid; box-shadow: 5px 5px 5px rgb(81, 79, 79);">
+    <div class = "col-md-3 text-dark" style = "margin : 5px; padding : 0; text-align : center; background-color: rgb(216, 214, 214); border-radius: 5px; border-color: black; border-style: solid; box-shadow: 5px 5px 5px rgb(81, 79, 79);">
     <header style="background : rgb(39, 181, 228)">
     <h1>${employees.getName()}</h1>
     ${uniqueIcon(employees)}
